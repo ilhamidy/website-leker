@@ -1,209 +1,578 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="src/logo12.png" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
-    <title>Leker jadoel indonesia</title>
+    <title>Leker Jadoel Indonesia</title>
+    <meta name="description" content="kue kering leker">
+    <link rel="icon" type="image/png" href="src/logo.png">
+
+    <!-- Preconnect untuk mempercepat loading aset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Stylesheets Eksternal -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    
+    <!-- Tailwind CSS Script -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Konfigurasi Tailwind CSS -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 
+                        'brand-brown': '#7B4019', 'brand-cream': '#FFEEA9', 
+                        'dark-brown': '#4a2c14', 'accent-gold': '#FFBF78' 
+                    },
+                    fontFamily: { 
+                        'sans': ['Poppins', 'sans-serif'] 
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Gaya Kustom untuk Tailwind -->
+    <style type="text/tailwindcss">
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        
+        @layer base {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        @layer components {
+            .nav-link { @apply hover:text-accent-gold transition-colors duration-300; }
+            .flavor-btn { @apply px-4 py-2 border border-brand-brown text-brand-brown rounded-full cursor-pointer transition-colors duration-200; }
+            .flavor-btn.active { @apply bg-brand-brown text-white; }
+            .modal-overlay { @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 transition-opacity duration-300; }
+            .modal-content {
+                @apply bg-white p-6 rounded-2xl shadow-xl w-full max-w-md transform scale-95 transition-transform duration-300;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            .modal-overlay:not(.hidden) .modal-content { @apply scale-100; }
+            .form-label { @apply block text-sm font-medium text-gray-700 mb-1; }
+            .form-input { @apply w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-brand-brown focus:border-brand-brown transition; }
+        }
+
+        /* Gaya CSS biasa untuk Swiper */
+        .swiper-button-next, .swiper-button-prev {
+            color: #7B4019; background-color: rgba(255, 238, 169, 0.8);
+            border-radius: 50%; width: 44px; height: 44px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .swiper-button-next:after, .swiper-button-prev:after { font-size: 20px; font-weight: bold; }
+        .swiper-pagination-bullet-active { background-color: #7B4019; }
+    </style>
 </head>
-<body>
-    <!-- navbar & hamburger menu-->
-  <div class="navbar">
-    <div class="logo">
-        <img src="src/logo12.png" alt="logo">
-    </div>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="menu" id="menu">
-      <a href="index.html">Beranda</a>
-      <a href="tentang.html">Tentang</a>
-      <a href="pesan.html">Pesan</a>
-    </div>
-  </div>
+<body class="bg-brand-cream font-sans text-dark-brown">
 
-  <!-- hero section -->
-  <div class="header">
-    <div class="info">
-        <h1>Rasakan<br>Renyahnya</h1>
-        <p>kue leker di setiap gigitan !</p>
-        <a href="https://wa.me/6285866556246" target="_blank">pesan sekarang</a>
-    </div>
-    <div class="gambar">
-        <img src="src/dusbox.png" alt="gambar product">
-    </div>
-  </div>
-
-  <!-- tentang leker -->
-  <div class="tentang">
-    <h1>Tentang Kami</h1>
-    <div class="content-tentang">
-      <div class="gambar-tentang">
-          <img src="src/leker-product.png" alt="produk leker">
-      </div>
-      <div class="info-tentang">
-          <article>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus, quae quaerat quas impedit dignissimos aliquam optio at amet sequi modi, culpa provident perspiciatis id. Fuga non rerum voluptas? Provident, cumque!
-          Sequi, explicabo? Unde culpa dolores libero in repellendus dolorem nihil quam ipsa impedit fugiat, quo atque necessitatibus, fugit dicta voluptate sequi, suscipit doloribus sed ex iste ipsam saepe odio aut.
-          Optio quae quos eos. Rerum ducimus voluptates magnam excepturi repellendus odio, cupiditate voluptatem quaerat officiis sit reiciendis exercitationem eum repudiandae consectetur, error maxime deleniti minima quam. Dignissimos nulla provident fuga.
-          Ex itaque possimus quidem quam exercitationem omnis ipsam eveniet necessitatibus accusamus similique laborum optio illum accusantium autem molestias enim minus blanditiis cupiditate tempore sunt placeat, dolores est. Assumenda, adipisci voluptatem!
-          Blanditiis voluptas deserunt atque distinctio totam autem iusto dolore corporis nesciunt eaque, at quae est expedita dolorum eius quaerat nemo? Consequuntur repellat reiciendis officiis recusandae sequi, natus nobis dolore aperiam?
-          Dolorem qui cum debitis autem. Nobis facilis earum dolore enim rerum suscipit et perspiciatis. Eius qui doloribus fugit velit quasi esse suscipit ipsa! Fugit, excepturi. Neque obcaecati laboriosam earum vero.
-          Excepturi architecto itaque similique minima nisi harum ullam! Unde reiciendis ut ad incidunt earum illo officiis iure, quisquam magnam voluptate eaque, ab asperiores officia architecto perspiciatis voluptates distinctio neque eligendi.</article>
-          <div class="lengkap">
-              <a href="tentang.html">info lengkap</a>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- product kami -->
-  <div class="product">
-    <h1>Produk Kami</h1>
-        <div class="menu-leker">
-            <div class="leker-items">
-                <img src="src/leker-product.png" alt="produk leker">
-                <div class="leker-info">
-                    <h3>Mesis Coklat</h3>
-                    <p>Rp. 2000;</p>
-                </div>
-            </div>
-            <div class="leker-items">
-                <img src="src/melon.png" alt="produk leker">
-                <div class="leker-info">
-                    <h3>Selai Melon</h3>
-                    <p>Rp. 2000;</p>
-                </div>
-            </div>
-            <div class="leker-items">
-                <img src="src/starberry.png" alt="produk leker">
-                <div class="leker-info">
-                    <h3>Selai Stawberry</h3>
-                    <p>Rp. 2000;</p>
-                </div>
-            </div>
-            <div class="leker-items">
-                <img src="src/blueberry.png" alt="produk leker">
-                <div class="leker-info">
-                    <h3>Selai Blueberry</h3>
-                    <p>Rp. 2000;</p>
-                </div>
-            </div>
-            <div class="leker-items">
-                <img src="src/leker-product.png" alt="produk leker">
-                <div class="leker-info">
-                    <h3>Leker Telor</h3>
-                    <p>Rp. 5000;</p>
+    <nav id="navbar" class="sticky top-0 z-40 bg-brand-cream/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 md:px-8 max-w-6xl">
+            <div class="flex justify-between items-center py-4">
+                <a href="#" onclick="App.showHomePage(event)" class="block">
+                    <img src="src/logo aplikasi.png" alt="Delicia Cookies Logo" class="h-10 w-auto">
+                </a>
+                <div class="hidden md:flex space-x-8 text-lg" id="desktop-menu"></div>
+                <div class="md:hidden">
+                    <button id="hamburger-btn" class="text-brand-brown focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="pesan">
-            <a href="https://wa.me/6285866556246" target="_blank">pesan sekarang</a>
-        </div>
-  </div>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-cream shadow-md"></div>
+    </nav>
+    
+    <main id="homePage">
+        <section class="relative h-[60vh] md:h-[90vh] w-full flex items-center justify-center text-center text-white bg-brand-brown">
+            <img src="src/dusbox.png" alt="Kue Kering Coklat Premium" class="absolute top-0 left-0 w-full h-full object-cover opacity-50" width="1974" height="1316">
+            <div class="relative z-10 p-4">
+                <h1 class="text-4xl md:text-7xl font-bold tracking-wider">Kelezatan dalam Setiap Gigitan</h1>
+                <p class="mt-4 text-lg md:text-2xl font-light">Cemilan Renyah Resep Juara</p>
+                <a href="#produk" class="mt-8 inline-block bg-white text-brand-brown font-bold py-3 px-8 rounded-full text-lg hover:bg-brand-cream transition-colors duration-300 shadow-lg">Lihat Menu</a>
+            </div>
+        </section>
 
-  <!-- section testimoni -->
-  <div class="testimoni">
-    <h1>Apa Kata Mereka</h1>
-    <div class="banner" id="banner">
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"enak banget lekernya kruncy garing dan manis, rekomended deh pokoknya terutama yang mesis coklat"</p>
+        <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+            <section class="text-center py-16 md:py-24">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-brown mb-4">Selamat Datang di Snack Jadoel</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Setiap gigitan adalah sebuah cerita. Kami hadir untuk membawa kehangatan dan kebahagiaan resep warisan keluarga ke dalam setiap momen spesial Anda.</p>
+            </section>
+
+            <section id="tentang" class="py-16 md:py-20 bg-white rounded-2xl shadow-sm">
+                <div class="flex flex-col text-center md:text-left md:flex-row items-center gap-8 md:gap-12 px-8">
+                    <div class="md:w-1/2">
+                        <h3 class="text-3xl font-bold text-brand-brown mb-4">Dibuat Dengan Bahan Terbaik</h3>
+                        <p class="text-gray-600">Di Snack Jadoel, kami percaya cemilan yang lezat berasal dari bahan yang jujur. Kami hanya menggunakan bahan-bahan pilihan dan bumbu racikan sendiri tanpa bahan pengawet untuk menciptakan rasa otentik yang tak tertandingi.</p>
+                    </div>
+                    <div class="md:w-1/2"><img src="src/dusbox.png" alt="Bahan-bahan kue kering" class="w-full h-auto rounded-lg object-cover" loading="lazy" width="1935" height="1290"></div>
+                </div>
+            </section>
+
+            <section id="produk" class="py-16 md:py-24">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-brown text-center mb-12">Produk Andalan Kami</h2>
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto"></div>
+            </section>
+
+            <section id="testimoni" class="py-16 md:py-20 relative">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-brown text-center mb-12">Apa Kata Mereka?</h2>
+                <div class="swiper testimonial-swiper relative px-4 sm:px-10">
+                    <div class="swiper-wrapper pb-16" id="testimonial-wrapper"></div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </section>
+
+            <section class="py-16 md:py-20 bg-brand-brown text-white rounded-2xl">
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center px-8">
+                    <div class="flex flex-col items-center"> <h4 class="font-bold text-xl mb-2">100% Tanpa Pengawet</h4> <p class="opacity-80">Dibuat segar setiap hari.</p> </div>
+                    <div class="flex flex-col items-center"> <h4 class="font-bold text-xl mb-2">Bahan Premium</h4> <p class="opacity-80">Dari pisang pilihan dan bumbu berkualitas.</p> </div>
+                    <div class="flex flex-col items-center"> <h4 class="font-bold text-xl mb-2">Resep Juara</h4> <p class="opacity-80">Rasa otentik yang bikin ketagihan.</p> </div>
+                </div>
+            </section>
         </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"makyus"</p>
+
+        <footer id="kontak" class="bg-dark-brown text-brand-cream mt-16 md:mt-24 pt-16 pb-8"></footer>
+    </main>
+
+    <!-- Halaman Detail Produk -->
+    <main id="detailPage" class="hidden">
+        <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+            <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <div class="swiper detail-swiper w-full aspect-square rounded-lg">
+                        <div class="swiper-wrapper" id="detail-swiper-wrapper"></div>
+                        <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
+                    </div>
+                    <div class="flex flex-col justify-center">
+                        <h1 id="detail-name" class="text-4xl font-bold text-brand-brown mb-2"></h1>
+                        <p id="detail-price" class="text-2xl text-accent-gold font-semibold mb-6"></p>
+                        <div class="mb-6">
+                            <h3 class="font-bold text-lg mb-3 text-dark-brown">Pilih Varian Rasa:</h3>
+                            <div id="detail-flavors" class="flex flex-wrap gap-3"></div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="font-bold text-lg mb-2 text-dark-brown">Deskripsi</h3>
+                            <p id="detail-description" class="text-gray-600"></p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div id="detail-buttons" class="flex flex-col sm:flex-row gap-4">
+                                <button onclick="App.openOrderModal()" class="w-full flex items-center justify-center bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600">Pesan via WhatsApp</button>
+                                <a id="detail-shopee-link" href="#" target="_blank" class="w-full flex items-center justify-center bg-orange-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-600">Pesan via Shopee</a>
+                            </div>
+                            <button onclick="App.showHomePage(event, 'produk')" class="w-full bg-transparent border border-brand-brown text-brand-brown font-bold py-3 px-6 rounded-lg hover:bg-brand-brown hover:text-white transition-colors">&larr; Kembali ke Homepage</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"enak bingit"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"mantul"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"sip joos gandos"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"sip joos gandos"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"sip joos gandos"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"sip joos gandos"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"sip joos gandos"</p>
-        </div>
-        <div class="banner-testimoni">
-            <img src="src/profile.png" alt="foto profil">
-            <h4 class="nama">Kak Aisyah Lathifah</h4>
-            <p class="quote">"sip joos gandos"</p>
+        <div id="detail-footer-container"></div>
+    </main>
+    
+    <!-- Modal Formulir WhatsApp -->
+    <div id="whatsapp-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="modal-title" class="text-2xl font-bold text-brand-brown">Formulir Pesanan</h3>
+                <button onclick="App.closeOrderModal()" class="text-gray-500 hover:text-gray-800 text-3xl font-bold">&times;</button>
+            </div>
+            <form id="whatsapp-form" onsubmit="App.submitWhatsAppOrder(event)">
+                <div class="space-y-4">
+                    <div><label for="wa-nama" class="form-label">Nama Lengkap</label><input type="text" id="wa-nama" class="form-input" required></div>
+                    <div><label for="wa-telp" class="form-label">No. Telp / WA</label><input type="tel" id="wa-telp" class="form-input" required placeholder="Contoh: 08123456789"></div>
+                    <div><label for="wa-email" class="form-label">Email (Opsional)</label><input type="email" id="wa-email" class="form-input"></div>
+                    
+                    <div class="border-t pt-4">
+                        <div id="standard-order-field">
+                            <label class="form-label">Jumlah per Rasa</label>
+                            <div id="wa-products-list" class="space-y-2 max-h-40 overflow-y-auto pr-2 border rounded-lg p-2"></div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <label for="custom-order-toggle" class="flex items-center cursor-pointer">
+                                <input type="checkbox" id="custom-order-toggle" class="h-4 w-4 rounded border-gray-300 text-brand-brown focus:ring-brand-brown">
+                                <span class="ml-2 text-gray-700">Pesan Kustom (Campur Rasa)</span>
+                            </label>
+                        </div>
+
+                        <div id="custom-order-field" class="hidden mt-2">
+                            <label id="custom-order-label" for="wa-pesanan-custom" class="form-label"></label>
+                            <textarea id="wa-pesanan-custom" rows="3" class="form-input" placeholder="Contoh:&#10;- Coklat Lumer (5 pcs)&#10;- Keju Asin (5 pcs)"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div id="address-field-delivery">
+                        <label for="wa-alamat" class="form-label">Alamat Lengkap Pengiriman</label>
+                        <textarea id="wa-alamat" rows="3" class="form-input"></textarea>
+                    </div>
+                    <div id="address-field-pickup" class="hidden">
+                        <label class="form-label">Metode Pengambilan</label>
+                        <div class="p-3 bg-gray-100 rounded-lg text-gray-700">Silahkan ambil di tempat "Toko Leker Jadoel Indonesia"</div>
+                    </div>
+                </div>
+                <button type="submit" class="w-full mt-6 bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors">Kirim Pesanan ke WhatsApp</button>
+            </form>
         </div>
     </div>
-  </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        const App = {
+            config: {
+                whatsAppNumber: "6281234567890",
+                address: "Jl. Kenangan Manis No. 123,<br>Kota Depok, Jawa Barat 16432",
+                googleMapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.132890660429!2d106.83173131527379!3d-6.37691499538801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec08a8a5e117%3A0x4e6559792196e8b!2sUniversitas%20Indonesia!5e0!3m2!1sen!2sid!4v1663000000000!5m2!1sen!2sid",
+                socialMedia: { instagram: "#", facebook: "#" },
+                navLinks: [ { text: 'Tentang', href: '#tentang' }, { text: 'Produk', href: '#produk' }, { text: 'Kontak', href: '#kontak' } ]
+            },
+            products: [
+                {
+                    id: 1, name: "Leker Jadoel Kering", shopeeUrl: "#", 
+                    deliveryType: 'delivery',
+                    homepageImage: "https://placehold.co/600x400/7B4019/FFEEA9?text=Bisa+Diantar",
+                    description: "Kripik pisang renyah dan gurih, dibuat dari pisang kepok pilihan dan bumbu berkualitas tinggi. Cocok untuk teman santai atau kumpul keluarga.",
+                    customOrderNote: "(Maks. 10 Pcs)",
+                    flavors: [
+                        { name: "Coklat Lumer", price: "Rp 15.000", imgs: ["src/mesis coklat.png", "src/blueberry.png"] },
+                        { name: "Keju Asin", price: "Rp 15.000", imgs: ["src/starberry.png"] },
+                        { name: "Balado Pedas", price: "Rp 15.000", imgs: ["src/dusbox.png"] },
+                        { name: "Original Gurih", price: "Rp 12.000", imgs: ["src/logo aplikasi.png"] },
+                        { name: "Green Tea", price: "Rp 18.000", imgs: ["src/melon.png"] }
+                    ]
+                },
+                {
+                    id: 2, name: "Leker Jadoel Basah", shopeeUrl: "#",
+                    deliveryType: 'pickup',
+                    homepageImage: "https://placehold.co/600x400/FFBF78/4a2c14?text=Ambil+di+Tempat",
+                    description: "Makaroni bantet super renyah dengan bumbu medok yang bikin ketagihan. Awas gak bisa berhenti!",
+                    customOrderNote: "", // Tidak ada batasan
+                    flavors: [
+                        { name: "Pedas Level 1", price: "Rp 10.000", imgs: ["src/dusbox.png"] },
+                        { name: "Pedas Daun Jeruk", price: "Rp 12.000", imgs: ["src/logo aplikasi.png"] },
+                        { name: "Asin Gurih", price: "Rp 8.000", imgs: ["src/melon.png"] }
+                    ]
+                }
+            ],
+            testimonials: [
+                { text: "Kripik Pisang Coklatnya juara! Gak pelit bumbu, renyah banget. Pasti beli lagi!", author: "Rina S., Jakarta" },
+                { text: "Makaroni Pedas Daun Jeruknya mantap. Pedesnya pas, wangi daun jeruknya berasa. Nagih!", author: "Budi H., Depok" },
+                { text: "Packaging-nya aman, snacknya sampai utuh tidak remuk. Kualitasnya oke banget.", author: "Amelia P., Bekasi" },
+                { text: "Baru kali ini nemu kripik pisang Green Tea, unik dan enak! Wajib coba.", author: "David L., Tangerang" },
+            ],
+            elements: {},
+            swiperInstances: {},
+            currentProductId: null,
 
-  <!-- section footer -->
-  <div class="section-footer">
-    <h1>Alamat & Contact</h1>
-    <div class="footer">
-        <div class="map">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17683.589304110643!2d110.42384355596703!3d-6.990767523753214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708bf24cedeb4f%3A0x3ae6ed2589795c77!2sLapangan%20Pancasila%20Simpang%20Lima%20Semarang!5e0!3m2!1sid!2sid!4v1746084760259!5m2!1sid!2sid" 
-                width="100%" 
-                height="100%" 
-                style="border:0;" 
-                allowfullscreen=""              
-                loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-        <div class="info-contact">
-            <div class="alamat">
-                <span><img src="src/maps.png" alt="icon"></span>
-                <h5>waroeng barokah, jl. bangetayu wetan, RT/RW 08/01, genuk, semarang, jawa tengah, indonesia 50115</h5>
-            </div>
-            <div class="telepon">
-                <span><img src="src/wa.png" alt="icon"></span>
-                <h5>08567357762890</h5>
-            </div>
-            <div class="instagram">
-                <span><img src="src/instagram.png" alt="icon"></span>
-                <h5>@leker_jadoel.id</h5>
-            </div>
-            <div class="shopee">
-                <span><img src="src/shopee.png" alt="icon"></span>
-                <h5>Leker Jadoel Indonesia</h5>
-            </div>
-            <div class="email">
-                <span><img src="src/email.jpg" alt="icon"></span>
-                <h5>Lekerjadoelid@gmail.com</h5>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="overlay" id="overlay"></div>
-  <div class="footer-end">
-    <p>&copy; Copyright Lekerjadoelindonesia 2025</p>
-  </div>
-  <script src="script.js"></script>
+            init() {
+                document.addEventListener('DOMContentLoaded', () => {
+                    this.cacheElements();
+                    this.addEventListeners();
+                    this.renderAll();
+                    this.initSwipers();
+                });
+            },
+
+            cacheElements() {
+                this.elements = {
+                    homePage: document.getElementById('homePage'),
+                    detailPage: document.getElementById('detailPage'),
+                    productGrid: document.getElementById('product-grid'),
+                    mainFooter: document.getElementById('kontak'),
+                    testimonialWrapper: document.getElementById('testimonial-wrapper'),
+                    hamburgerBtn: document.getElementById('hamburger-btn'),
+                    mobileMenu: document.getElementById('mobile-menu'),
+                    desktopMenu: document.getElementById('desktop-menu'),
+                    detailFooterContainer: document.getElementById('detail-footer-container'),
+                    modal: document.getElementById('whatsapp-modal'),
+                    modalForm: document.getElementById('whatsapp-form'),
+                    modalTitle: document.getElementById('modal-title'),
+                    waProductsList: document.getElementById('wa-products-list'),
+                    addressDelivery: document.getElementById('address-field-delivery'),
+                    addressPickup: document.getElementById('address-field-pickup'),
+                    waAddressTextarea: document.getElementById('wa-alamat'),
+                    customOrderToggle: document.getElementById('custom-order-toggle'),
+                    customOrderField: document.getElementById('custom-order-field'),
+                    standardOrderField: document.getElementById('standard-order-field'),
+                    waCustomOrderTextarea: document.getElementById('wa-pesanan-custom'),
+                    customOrderLabel: document.getElementById('custom-order-label'),
+                };
+            },
+
+            addEventListeners() {
+                this.elements.hamburgerBtn.addEventListener('click', (e) => { e.stopPropagation(); this.toggleMobileMenu(); });
+                window.addEventListener('click', (e) => {
+                    if (!this.elements.mobileMenu.classList.contains('hidden')) {
+                        const isClickInside = this.elements.mobileMenu.contains(e.target) || this.elements.hamburgerBtn.contains(e.target);
+                        if (!isClickInside) this.toggleMobileMenu(true);
+                    }
+                });
+                this.elements.modal.addEventListener('click', (e) => {
+                    if (e.target === this.elements.modal) this.closeOrderModal();
+                });
+                this.elements.customOrderToggle.addEventListener('change', () => this.toggleCustomOrderMode());
+            },
+
+            renderAll() {
+                this.renderNav();
+                this.renderHomepageProducts();
+                this.renderTestimonials();
+                this.renderFooter();
+                this.elements.detailFooterContainer.appendChild(this.elements.mainFooter.cloneNode(true));
+            },
+            
+            renderNav(isDetailPage = false) {
+                this.elements.desktopMenu.innerHTML = isDetailPage ? '' : this.config.navLinks.map(l => `<a href="${l.href}" class="nav-link">${l.text}</a>`).join('');
+                this.elements.hamburgerBtn.style.display = isDetailPage ? 'none' : 'block';
+                this.elements.mobileMenu.innerHTML = isDetailPage ? '' : this.config.navLinks.map(l => `<a href="${l.href}" onclick="App.toggleMobileMenu(true)" class="block text-center py-4 text-lg nav-link">${l.text}</a>`).join('');
+            },
+
+            renderHomepageProducts() {
+                this.elements.productGrid.innerHTML = this.products.map(product => `
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col transform hover:-translate-y-2 transition-transform duration-300 cursor-pointer group" onclick="App.showDetailPage(${product.id})">
+                        <img src="${product.homepageImage}" alt="${product.name}" class="w-full h-48 md:h-64 object-cover" loading="lazy">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <div>
+                                <h3 class="text-xl font-bold text-brand-brown">${product.name}</h3>
+                                <p class="text-gray-600 mt-1">Berbagai Varian Rasa</p>
+                            </div>
+                            <p class="mt-auto pt-4 w-full text-brand-brown font-bold transition-opacity">Lihat Varian Rasa</p>
+                        </div>
+                    </div>`).join('');
+            },
+
+            renderTestimonials() {
+                this.elements.testimonialWrapper.innerHTML = this.testimonials.map(t => `
+                    <div class="swiper-slide bg-white p-6 rounded-2xl shadow-sm !h-full flex flex-col">
+                        <p class="text-gray-600 italic mb-4 text-sm">${t.text}</p>
+                        <p class="font-bold text-center text-brand-brown mt-auto pt-2 text-sm">- ${t.author}</p>
+                    </div>`).join('');
+            },
+            
+            renderFooter() {
+                const waMsg = encodeURIComponent("Halo, saya ingin memesan produk Anda.");
+                const footerHTML = `
+                    <div class="container mx-auto px-8 max-w-6xl">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                            <div>
+                                <h4 class="text-2xl font-bold mb-4">Lokasi Kami</h4><p class="mb-4 opacity-80">${this.config.address}</p>
+                                <div class="rounded-lg overflow-hidden"><iframe src="${this.config.googleMapsUrl}" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+                            </div>
+                            <div class="md:text-right">
+                                <h4 class="text-2xl font-bold mb-4">Hubungi Kami</h4><p class="mb-6 opacity-80">Punya pertanyaan? Jangan ragu hubungi kami!</p>
+                                <a href="https://api.whatsapp.com/send?phone=${this.config.whatsAppNumber}&text=${waMsg}" target="_blank" class="inline-block bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 mb-6">Pesan via WhatsApp</a>
+                                <h4 class="text-2xl font-bold mb-4">Temukan Kami</h4>
+                                <div class="flex gap-4 md:justify-end">
+                                    <a href="${this.config.socialMedia.instagram}" class="hover:opacity-75"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" /></svg></a>
+                                    <a href="${this.config.socialMedia.facebook}" class="hover:opacity-75"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.81C10.44 7.31 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z" /></svg></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center border-t border-brand-cream/20 pt-8 mt-8"><p class="opacity-60">&copy; ${new Date().getFullYear()} Delicia Cookies. Dibuat dengan ❤︎ di Depok.</p></div>
+                    </div>`;
+                this.elements.mainFooter.innerHTML = footerHTML;
+            },
+
+            initSwipers() {
+                this.swiperInstances.testimonials = new Swiper('.testimonial-swiper', { 
+                    loop: true, 
+                    pagination: { el: '.swiper-pagination', clickable: true }, 
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, 
+                    breakpoints: { 320: { slidesPerView: 1, spaceBetween: 15 }, 768: { slidesPerView: 3, spaceBetween: 20 }, 1024: { slidesPerView: 4, spaceBetween: 30 } } 
+                });
+            },
+            
+            toggleMobileMenu(forceClose = false) {
+                this.elements.mobileMenu.classList.toggle('hidden', forceClose || !this.elements.mobileMenu.classList.contains('hidden'));
+            },
+
+            showHomePage(event, sectionId = null) {
+                if (event) event.preventDefault();
+                this.elements.detailPage.classList.add('hidden');
+                this.elements.homePage.classList.remove('hidden');
+                this.renderNav(false);
+                
+                if (sectionId) {
+                    setTimeout(() => {
+                        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                } else {
+                    window.scrollTo(0, 0);
+                }
+            },
+            
+            showDetailPage(productId) {
+                this.currentProductId = productId;
+                const product = this.products.find(p => p.id === productId);
+                if (!product) return;
+
+                this.elements.homePage.classList.add('hidden');
+                this.elements.detailPage.classList.remove('hidden');
+                this.renderNav(true);
+                
+                const flavorButtonsContainer = document.getElementById('detail-flavors');
+                flavorButtonsContainer.innerHTML = product.flavors.map(flavor => 
+                    `<button class="flavor-btn">${flavor.name}</button>`
+                ).join('');
+                
+                this.updateDetailView(product.flavors[0].name);
+                window.scrollTo(0, 0);
+            },
+            
+            updateDetailView(flavorName) {
+                const product = this.products.find(p => p.id === this.currentProductId);
+                if (!product) return;
+
+                const flavor = product.flavors.find(f => f.name === flavorName);
+                if (!flavor) return;
+
+                document.getElementById('detail-name').innerText = `${product.name} Rasa ${flavor.name}`;
+                document.getElementById('detail-price').innerText = flavor.price;
+                document.getElementById('detail-description').innerText = product.description;
+
+                const shopeeLink = document.getElementById('detail-shopee-link');
+                shopeeLink.href = product.shopeeUrl;
+                shopeeLink.style.display = product.deliveryType === 'pickup' ? 'none' : 'flex';
+
+                const flavorBtns = document.getElementById('detail-flavors').querySelectorAll('.flavor-btn');
+                flavorBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn.innerText === flavorName);
+                    btn.onclick = () => this.updateDetailView(btn.innerText);
+                });
+
+                const swiperWrapper = document.getElementById('detail-swiper-wrapper');
+                swiperWrapper.innerHTML = flavor.imgs.map(url => `<div class="swiper-slide"><img src="${url}" alt="${product.name} ${flavor.name}" class="w-full h-full object-cover" loading="lazy"></div>`).join('');
+
+                if (this.swiperInstances.details) this.swiperInstances.details.destroy(true, true);
+                this.swiperInstances.details = new Swiper('.detail-swiper', { loop: flavor.imgs.length > 1, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } });
+            },
+
+            openOrderModal() {
+                const product = this.products.find(p => p.id === this.currentProductId);
+                if (!product) return;
+
+                this.elements.modalTitle.innerText = `Formulir Pesanan ${product.name}`;
+                
+                if (product.deliveryType === 'pickup') {
+                    this.elements.addressDelivery.classList.add('hidden');
+                    this.elements.addressPickup.classList.remove('hidden');
+                    this.elements.waAddressTextarea.required = false;
+                } else {
+                    this.elements.addressDelivery.classList.remove('hidden');
+                    this.elements.addressPickup.classList.add('hidden');
+                    this.elements.waAddressTextarea.required = true;
+                }
+                
+                this.elements.waProductsList.innerHTML = product.flavors.map(flavor => `
+                    <div class="flex items-center justify-between">
+                        <label for="qty-${flavor.name.replace(/\s+/g, '')}" class="text-gray-700">${product.name} ${flavor.name}</label>
+                        <input type="number" id="qty-${flavor.name.replace(/\s+/g, '')}" name="${flavor.name}" min="0" value="0" class="form-input w-20 text-center">
+                    </div>
+                `).join('');
+                
+                this.elements.customOrderLabel.innerText = `Tulis Pesanan Custom Anda ${product.customOrderNote || ''}`.trim();
+
+                this.elements.customOrderToggle.checked = false;
+                this.toggleCustomOrderMode();
+                
+                this.elements.modal.classList.remove('hidden');
+            },
+
+            closeOrderModal() {
+                this.elements.modal.classList.add('hidden');
+                this.elements.modalForm.reset();
+            },
+
+            toggleCustomOrderMode() {
+                const isCustom = this.elements.customOrderToggle.checked;
+                this.elements.standardOrderField.classList.toggle('opacity-50', isCustom);
+                this.elements.waProductsList.querySelectorAll('input').forEach(input => input.disabled = isCustom);
+                
+                this.elements.customOrderField.classList.toggle('hidden', !isCustom);
+                this.elements.waCustomOrderTextarea.required = isCustom;
+
+                if (isCustom) {
+                    this.elements.waProductsList.querySelectorAll('input').forEach(input => input.value = 0);
+                } else {
+                    this.elements.waCustomOrderTextarea.value = '';
+                }
+            },
+
+            submitWhatsAppOrder(event) {
+                event.preventDefault();
+                const product = this.products.find(p => p.id === this.currentProductId);
+                if (!product) return;
+
+                const form = this.elements.modalForm;
+                const name = form.querySelector('#wa-nama').value;
+                const phone = form.querySelector('#wa-telp').value;
+                const email = form.querySelector('#wa-email').value;
+                
+                let orderDetails = '';
+                const isCustom = this.elements.customOrderToggle.checked;
+
+                if(isCustom) {
+                    const customText = this.elements.waCustomOrderTextarea.value;
+                    if (!customText.trim()) {
+                        alert('Mohon isi pesanan custom Anda.');
+                        return;
+                    }
+                    orderDetails = `(Pesanan Kustom)\n${customText}`;
+                } else {
+                    const productInputs = this.elements.waProductsList.querySelectorAll('input[type="number"]');
+                    productInputs.forEach(input => {
+                        if (input.value > 0) {
+                            orderDetails += `- ${product.name} ${input.name} (${input.value} Pcs)\n`;
+                        }
+                    });
+                }
+
+                if (!orderDetails.trim()) {
+                    alert('Mohon isi jumlah produk yang ingin dipesan.');
+                    return;
+                }
+                
+                let addressInfo;
+                if (product.deliveryType === 'pickup') {
+                    addressInfo = 'Pesanan akan diambil di tempat.';
+                } else {
+                    const address = this.elements.waAddressTextarea.value;
+                    if (!address.trim()) {
+                        alert('Mohon isi alamat pengiriman.');
+                        return;
+                    }
+                    addressInfo = `*Alamat Pengiriman:*\n${address}`;
+                }
+
+                const message = `Halo, saya mau pesan ${product.name}:
+
+*Nama:* ${name}
+*No. WA:* ${phone}
+*Email:* ${email || '-'}
+
+*Pesanan:*
+${orderDetails}
+${addressInfo}
+
+Terima kasih.`;
+
+                const waUrl = `https://api.whatsapp.com/send?phone=${this.config.whatsAppNumber}&text=${encodeURIComponent(message)}`;
+                window.open(waUrl, '_blank');
+                this.closeOrderModal();
+            }
+        };
+
+        App.init();
+    </script>
 </body>
 </html>
+
