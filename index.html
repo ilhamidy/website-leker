@@ -61,6 +61,9 @@
             .modal-overlay:not(.hidden) .modal-content { @apply scale-100; }
             .form-label { @apply block text-sm font-medium text-gray-700 mb-1; }
             .form-input { @apply w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-1 focus:ring-brand-brown focus:border-brand-brown transition; }
+            .qty-btn {
+                @apply w-8 h-8 flex items-center justify-center bg-gray-200 text-brand-brown rounded-full font-bold text-lg hover:bg-gray-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+            }
         }
 
         /* Gaya CSS biasa untuk Swiper */
@@ -78,7 +81,7 @@
         <div class="container mx-auto px-4 md:px-8 max-w-6xl">
             <div class="flex justify-between items-center py-4">
                 <a href="#" onclick="App.showHomePage(event)" class="block">
-                    <img src="src/logo aplikasi.png" alt="Delicia Cookies Logo" class="h-10 w-auto">
+                    <img src="src/logo aplikasi.png" alt="Leker Jadoel Indonesia Logo" class="h-10 w-auto">
                 </a>
                 <div class="hidden md:flex space-x-8 text-lg" id="desktop-menu"></div>
                 <div class="md:hidden">
@@ -118,7 +121,7 @@
             </section>
 
             <section id="produk" class="py-16 md:py-24">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-brown text-center mb-12">Produk Andalan Kami</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-brown text-center mb-12">Layanan Kami</h2>
                 <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto"></div>
             </section>
 
@@ -154,7 +157,7 @@
                         <div class="swiper-button-next"></div><div class="swiper-button-prev"></div><div class="swiper-pagination"></div>
                     </div>
                     <div class="flex flex-col justify-center">
-                        <h1 id="detail-name" class="text-4xl font-bold text-brand-brown mb-2"></h1>
+                        <h1 id="detail-name" class="text-3xl md:text-4xl font-bold text-brand-brown mb-2"></h1>
                         <p id="detail-price" class="text-2xl text-accent-gold font-semibold mb-6"></p>
                         <div class="mb-6">
                             <h3 class="font-bold text-lg mb-3 text-dark-brown">Pilih Varian Rasa:</h3>
@@ -194,7 +197,7 @@
                     <div class="border-t pt-4">
                         <div id="standard-order-field">
                             <label class="form-label">Jumlah per Rasa</label>
-                            <div id="wa-products-list" class="space-y-2 max-h-40 overflow-y-auto pr-2 border rounded-lg p-2"></div>
+                            <div id="wa-products-list" class="space-y-3 max-h-40 overflow-y-auto pr-2 border rounded-lg p-3"></div>
                         </div>
                         
                         <div class="mt-4">
@@ -229,17 +232,17 @@
     <script>
         const App = {
             config: {
-                whatsAppNumber: "6281234567890",
-                address: "Jl. Kenangan Manis No. 123,<br>Kota Depok, Jawa Barat 16432",
-                googleMapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.132890660429!2d106.83173131527379!3d-6.37691499538801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec08a8a5e117%3A0x4e6559792196e8b!2sUniversitas%20Indonesia!5e0!3m2!1sen!2sid!4v1663000000000!5m2!1sen!2sid",
+                whatsAppNumber: "6285866556246",
+                address: "Jl. Al Barokah, Bangetayu Wetan, Kec. Genuk, Kota Semarang, Jawa Tengah 50115",
+                googleMapsUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247.51187089172097!2d110.48036385323306!3d-6.986894574517072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e708df8e03de433%3A0x93936d029c98f13f!2sWarong%20Barokah!5e0!3m2!1sid!2sid!4v1757923058894!5m2!1sid!2sid",
                 socialMedia: { instagram: "#", facebook: "#" },
                 navLinks: [ { text: 'Tentang', href: '#tentang' }, { text: 'Produk', href: '#produk' }, { text: 'Kontak', href: '#kontak' } ]
             },
             products: [
                 {
-                    id: 1, name: "Leker Jadoel Kering", shopeeUrl: "#", 
+                    id: 1, name: "Leker Jadoel Kering", shopeeUrl: "https://s.shopee.co.id/AKRCz37W2z", 
                     deliveryType: 'delivery',
-                    homepageImage: "https://placehold.co/600x400/7B4019/FFEEA9?text=Bisa+Diantar",
+                    homepageImage: "src/kirim.png",
                     description: "Kripik pisang renyah dan gurih, dibuat dari pisang kepok pilihan dan bumbu berkualitas tinggi. Cocok untuk teman santai atau kumpul keluarga.",
                     customOrderNote: "(Maks. 10 Pcs)",
                     flavors: [
@@ -251,15 +254,15 @@
                     ]
                 },
                 {
-                    id: 2, name: "Leker Jadoel Basah", shopeeUrl: "#",
+                    id: 2, name: "Leker Jadoel Basah",
                     deliveryType: 'pickup',
-                    homepageImage: "https://placehold.co/600x400/FFBF78/4a2c14?text=Ambil+di+Tempat",
-                    description: "Makaroni bantet super renyah dengan bumbu medok yang bikin ketagihan. Awas gak bisa berhenti!",
+                    homepageImage: "src/COD.png",
+                    description: "Leker jadoel basah merupakan jajanan leker versi basahnya dengan varian toping telur,pisang,keju,dll, harga yang tertera untuk 1 pcs leker basah, Leker jadoel basah tidak dapat di kirimkan karena tidak bisa bertahan lama, silahkan konfirmasi kan dengan admin setelah selesai pemesanan",
                     customOrderNote: "", // Tidak ada batasan
                     flavors: [
-                        { name: "Pedas Level 1", price: "Rp 10.000", imgs: ["src/dusbox.png"] },
-                        { name: "Pedas Daun Jeruk", price: "Rp 12.000", imgs: ["src/logo aplikasi.png"] },
-                        { name: "Asin Gurih", price: "Rp 8.000", imgs: ["src/melon.png"] }
+                        { name: "Pedas Level 1", price: "Rp 5.000", imgs: ["src/dusbox.png"] },
+                        { name: "Pedas Daun Jeruk", price: "Rp 5.000", imgs: ["src/logo aplikasi.png"] },
+                        { name: "Asin Gurih", price: "Rp 5.000", imgs: ["src/melon.png"] }
                     ]
                 }
             ],
@@ -377,7 +380,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center border-t border-brand-cream/20 pt-8 mt-8"><p class="opacity-60">&copy; ${new Date().getFullYear()} Delicia Cookies. Dibuat dengan ❤︎ di Depok.</p></div>
+                        <div class="text-center border-t border-brand-cream/20 pt-8 mt-8"><p class="opacity-60">&copy; ${new Date().getFullYear()} Leker Jadoel Indonesia</p></div>
                     </div>`;
                 this.elements.mainFooter.innerHTML = footerHTML;
             },
@@ -474,8 +477,12 @@
                 
                 this.elements.waProductsList.innerHTML = product.flavors.map(flavor => `
                     <div class="flex items-center justify-between">
-                        <label for="qty-${flavor.name.replace(/\s+/g, '')}" class="text-gray-700">${product.name} ${flavor.name}</label>
-                        <input type="number" id="qty-${flavor.name.replace(/\s+/g, '')}" name="${flavor.name}" min="0" value="0" class="form-input w-20 text-center">
+                        <label for="qty-${flavor.name.replace(/\s+/g, '')}" class="text-sm text-gray-700">${product.name} ${flavor.name}</label>
+                        <div class="flex items-center gap-2">
+                            <button type="button" class="qty-btn" onclick="App.updateQty('qty-${flavor.name.replace(/\s+/g, '')}', -1)">-</button>
+                            <input type="text" id="qty-${flavor.name.replace(/\s+/g, '')}" name="${flavor.name}" value="0" readonly class="form-input w-12 text-center p-1">
+                            <button type="button" class="qty-btn" onclick="App.updateQty('qty-${flavor.name.replace(/\s+/g, '')}', 1)">+</button>
+                        </div>
                     </div>
                 `).join('');
                 
@@ -486,6 +493,14 @@
                 
                 this.elements.modal.classList.remove('hidden');
             },
+            
+            updateQty(inputId, change) {
+                const input = document.getElementById(inputId);
+                let currentValue = parseInt(input.value);
+                let newValue = currentValue + change;
+                if (newValue < 0) newValue = 0;
+                input.value = newValue;
+            },
 
             closeOrderModal() {
                 this.elements.modal.classList.add('hidden');
@@ -495,7 +510,7 @@
             toggleCustomOrderMode() {
                 const isCustom = this.elements.customOrderToggle.checked;
                 this.elements.standardOrderField.classList.toggle('opacity-50', isCustom);
-                this.elements.waProductsList.querySelectorAll('input').forEach(input => input.disabled = isCustom);
+                this.elements.waProductsList.querySelectorAll('input, button').forEach(el => el.disabled = isCustom);
                 
                 this.elements.customOrderField.classList.toggle('hidden', !isCustom);
                 this.elements.waCustomOrderTextarea.required = isCustom;
@@ -528,7 +543,7 @@
                     }
                     orderDetails = `(Pesanan Kustom)\n${customText}`;
                 } else {
-                    const productInputs = this.elements.waProductsList.querySelectorAll('input[type="number"]');
+                    const productInputs = this.elements.waProductsList.querySelectorAll('input[type="text"]');
                     productInputs.forEach(input => {
                         if (input.value > 0) {
                             orderDetails += `- ${product.name} ${input.name} (${input.value} Pcs)\n`;
